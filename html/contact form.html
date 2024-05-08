@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <style>
+        body {
+          font-family: monaco, Consolas, 'Lucida Console', monospace;
+          background-color: rgb(249, 240, 255);
+        }
+        .w3-container{ 
+            width: 200px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border: 1px solid #464546;
+            border-radius: 5px;
+            margin-left: 0; 
+            margin-right: auto; 
+        }
+        .container {
+          max-width: 400px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #f5f5f5;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+        h1 {
+          text-align: center;
+        }
+        label {
+          display: block;
+          margin-bottom: 10px;
+        }
+        input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          box-sizing: border-box;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .submit {
+          padding: 10px 20px;
+          background-color: #4caf50;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+        .result {
+          margin-top: 20px;
+          font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+  <div class="page-heading">
+      <h1>Contact Us</h1>
+  </div>
+  <form id="contact_form" class="form-block">
+      <div class="container">
+          <h2>Contact Information</h2>
+          <p>
+              Required fields are followed by 
+              <strong><abbr title="required">*</abbr></strong>
+          </p>
+          <div class='w3-container'>
+              <!-- {% if not user.is_authenticated():%}-->
+              <label for="username">Full Name <abbr title="required">*</abbr></label>                    
+              <input id="name" type="text" name="username" />
+              <label for="mail">E-mail <abbr title="required">*</abbr></label>
+              <input type="mail" id="mail" name="usermail" />
+              <!--{% endif%}-->
+          </div>
+          
+          <div class="input-group">
+            <p>
+              <label for="inquiry">Inquiry Type <abbr title="required">*</abbr></label>
+              <select id="subject" name="input-lg">
+              <option value="payments">Payments</option>
+              <option value="certificates">Certificates</option>
+              <option value="assessments">Assessments</option>
+              <option value="videos">Videos</option>
+              <option value="discussion-forums">Discussion Forums</option>
+              <option value="mobile-application">Mobile Application</option>
+              <option value="other">Other</option>
+              </select>
+           </p>
+          </div>
+          <div class="input-group">
+            <label for="details">Message <abbr title="required">*</abbr></label>
+            <textarea id="details" rows='5'></textarea>
+          </div>
+          <input type="text" name="issue_type" id="issue_type" value="Contact" class="hidden">
+          <p>
+            <button class="submit" id="submitButton">Submit</button>
+          </p>
+          <div class="result" id="error_message" style="color: red;"></div>
+        <!--<div class="result" id="Message" style="display:none;">Thank you for clicking the button!</div>-->
+      </div>    
+  </form>
+  <script>
+    const element = document.getElementById('submitButton');
+    element.addEventListener('click', function() { 
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('mail').value;
+      var inquiry = document.getElementById('subject').value;
+      var message = document.getElementById('details').value;
+      var errorMessage='';
+
+      var errorMessage = document.getElementById('error_message');
+      if (name === '' || email === '' || inquiry === '' || message === '') {
+        errorMessage.innerHTML = '<p>Please fill in all required fields.</p>';
+      } else {
+        errorMessage.innerHTML = '';
+        alert("Thank you for your inquiry.\nWe'll get back to you within 24 hours");
+      };  
+    });   
+  </script>
+</body>
+</html>
